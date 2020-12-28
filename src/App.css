@@ -1,22 +1,41 @@
-.nav {
-    grid-area: nav;
-}
-
-.nav li {
-    display: inline;
-    margin-left: 25px;
-}
-
 .messageNameWrapper {
-    grid-area: mWrap;
+    background-color: aliceblue;
+    border: 1px dashed blueviolet;
+    padding: 15px;
 }
 
 .messageContentWrapper {
-    grid-area: mCont;
+    background-color: aliceblue;
+    border: 1px dashed blueviolet;
 }
 
 .grid-container {
+    width: 1200px;
+    margin: 40px 20px;
     display: grid;
-    grid-template-areas: 'nav nav nav nav nav nav' 'mWrap mWrap mCont mCont mCont mCont';
-    grid-gap: 10px;
+    grid-template-columns: 400px 800px;
+    /* grid-template-rows: 400px 400px; */
+    grid-gap: 50px;
+}
+
+h2 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    background-color: greenyellow;
+    width: 209px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 31px;
+    margin-bottom: 20px !important;
+}
+
+.messageContentWrapper {
+    padding: 15px;
+}
+
+.numberOfMessage {
+    background-color: cornflowerblue;
+    padding: 5px;
+    border-radius: 34px;
+    float: right;
+    color: white;
 }

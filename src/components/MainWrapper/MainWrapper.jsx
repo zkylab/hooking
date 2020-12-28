@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import MessageContentWrapper from '../MessageContentWrapper/MessageContentWrapper';
 import MessageNameWrapper from '../MessageNameWrapper/MessageNameWrapper';
 
-import Nav from '../Nav/Nav';
+import Navigation from '../Nav/Navigation';
 
 class MainWrapper extends Component {
     constructor(props) {
         super(props);
-        this.state ={
-            activeModule:"",
+        this.state = {
+            activeModule: "",
             messageNames: [],
             activeMessage: "",
-            messageContents:[]
+            messageContents: []
         }
         this.changeActiveModule = this.changeActiveModule.bind(this);
         this.changeActiveMessage = this.changeActiveMessage.bind(this);
@@ -27,12 +27,12 @@ class MainWrapper extends Component {
         this.updateCurrentModule()
     }
 
-    updateCurrentModule(){
-        if(this.state.activeModule == "RADNET"){
+    updateCurrentModule() {
+        if (this.state.activeModule == "RADNET") {
             this.setState({
                 messageNames: ["RADNET.IE221_0", "RADNET.IE222_0", "RADNET.IE223_0"]
             })
-        }else if(this.state.activeModule == "ACCS"){
+        } else if (this.state.activeModule == "ACCS") {
             this.setState({
                 messageNames: ["ACCS.IE321_0", "ACCS.IE322_0", "ACCS.IE423_0"]
             })
@@ -48,27 +48,29 @@ class MainWrapper extends Component {
         this.updateMessageContents()
     }
 
-   
-    updateMessageContents(){
-        if(this.state.activeMessage == "RADNET.IE221_0"){
+
+    updateMessageContents() {
+        if (this.state.activeMessage == "RADNET.IE221_0") {
             this.setState({
-                messageContents: ["RADNET.IE221_0.XLORDMASTER", "RADNET.IE222_0.XLORDMASTER", "RADNET.IE223_0.XLORDMASTER"]
+                messageContents: ["RADNET.IE221_0.XLORDMASTER", "RADNET.IE222_0.XLORDMASTER", "RADNET.IE223_0.XLORDMASTER", "RADNET.IE555.X"]
             })
-        }else if(this.state.activeMessage == "RADNET.IE222_0"){
+        } else if (this.state.activeMessage == "RADNET.IE222_0") {
             this.setState({
                 messageContents: ["RADNET.IE251_0.XLORD", "RADNET.IE222_0.XLORD51", "RADNET.IE222_0.XLRD51"]
             })
         }
-        
+
         console.log(this.state.messageContents)
     }
 
     render() {
         return (
-            <div className = "grid-container">
-                <Nav onModuleChange ={this.changeActiveModule}/>
-                <MessageNameWrapper messageNames ={this.state.messageNames} onMessageChange = {this.changeActiveMessage} ></MessageNameWrapper>
-                <MessageContentWrapper messageContents = {this.state.messageContents} ></MessageContentWrapper>
+            <div className="main-container">
+                <Navigation onModuleChange={this.changeActiveModule} />
+                <div className="grid-container">
+                    <MessageNameWrapper messageContentLength= {this.state.messageContents.length} messageNames={this.state.messageNames} onMessageChange={this.changeActiveMessage} ></MessageNameWrapper>
+                    <MessageContentWrapper messageContents={this.state.messageContents} ></MessageContentWrapper>
+                </div>
             </div>
         );
     }
